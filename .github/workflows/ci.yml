@@ -28,24 +28,3 @@ jobs:
       run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
     - name: Deploy application
       run: echo "Deploying application (e.g. Kubernetes)"
-      with:
-          distribution: 'adopt'
-          java-version: '11'
-          java-package: jdk
-    - name: Build and test project
-      working-directory: github-actions-java-maven
-      run: mvn -B verify
-    - name: Upload Maven build artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact.jar
-        path: github-actions-java-maven/target/github-actions-java-maven.jar
-           mvn clean install
-           mkdir artifacts && cp target/*.jar artifacts
-           cd artifacts && ls
-    - name: Save artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: github-action-artifact
-        path: artifacts
-   
