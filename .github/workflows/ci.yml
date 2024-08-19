@@ -1,19 +1,18 @@
-name: Build sample Java Maven project
- 
-on: [push, pull_request]
- 
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
-  # existing jobs ..
- 
-  deploy:
-    runs-on: ubuntu-20.04
-    needs: build
-    name: Build Docker Container and Deploy to Kubernetes
+  build:
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
-    - name: Download Maven build artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: artifact.jar
-        path: github-actions-java-maven/target
-          
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other commands here
+        echo This runs in a shell
